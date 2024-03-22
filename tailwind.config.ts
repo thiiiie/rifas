@@ -34,6 +34,9 @@ const config = {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        footer: {
+          background: "var(--footer-background)",
+        },
         selectButton: {
           background: "var(--select-button-background)",
           foreground: "var(--select-button-foreground)",
