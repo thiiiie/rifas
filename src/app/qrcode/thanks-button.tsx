@@ -23,22 +23,22 @@ export const ThanksButton = ({ quantity = "1" }: ThanksButtonProps) => {
       });
     }
     
-    const user = JSON.parse(cookies.user);
+    // const user = JSON.parse(cookies.user);
 
-    const data = await fetchClient({
-      url: `/payments?filters[quantity][$eq]=${user.document}`,
-      method: "GET",
-    })
+    // const data = await fetchClient({
+    //   url: `/payments?filters[document][$eq]=${user.document}`,
+    //   method: "GET",
+    // })
 
-    console.log(data)
+    // console.log(data)
 
-    // const numbers = Array.from({ length: Number(quantity) }, () => getRandomInt(1246, 9999))
+    const numbers = Array.from({ length: Number(quantity) }, () => getRandomInt(1246, 9999))
 
-    // setCookie(null, 'numbers', JSON.stringify(numbers), {
-    //   path: '/',
-    // });
+    setCookie(null, 'numbers', JSON.stringify(numbers), {
+      path: '/',
+    });
 
-    // replace(`/obrigado/${quantity}`)
+    replace(`/obrigado/${quantity}`)
   }
 
   return (
