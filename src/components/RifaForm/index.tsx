@@ -5,16 +5,25 @@ import { SelectButton } from "../SelectButton"
 import { useState } from "react"
 import { MIN_QUANTITY, PRICE } from "@/app/constants"
 import { PhoneModal } from "../PhoneModal"
+import { PhoneModalErrorField } from "../PhoneModal/error-field"
 
-export const RifaForm = () => {
-  const [count, setCount] = useState(MIN_QUANTITY)
+interface RifaFormProps {
+  minQuantity?: number
+  price?: number
+}
+
+export const RifaForm = ({
+  minQuantity = MIN_QUANTITY,
+  price = PRICE
+}: RifaFormProps) => {
+  const [count, setCount] = useState(minQuantity)
 
   const increment = () => {
     setCount(count + 1)
   }
 
   const decrement = () => {
-    if (count > MIN_QUANTITY) {
+    if (count > minQuantity) {
       setCount(count - 1)
     }
   }
@@ -39,11 +48,18 @@ export const RifaForm = () => {
         increment={increment}
         decrement={decrement}
         setCount={setCount}
-        minValue={MIN_QUANTITY}
+        minValue={minQuantity}
       />
+      {
+        count < minQuantity && (
+          <PhoneModalErrorField>
+            A quantidade mínima de títulos para participar é <strong className="text-green-700">{minQuantity}</strong>, digite um número maior ou igual a {minQuantity}.
+          </PhoneModalErrorField>
+        )
+      }
 
-      <PhoneModal value={PRICE * count} count={count}>
-        <button disabled={count < MIN_QUANTITY} type="button" className="relative flex items-center justify-between p-4 bg-green-700 mt-2 rounded-lg w-full text-white font-extrabold disabled:bg-slate-600 disabled:opacity-60">
+      <PhoneModal value={price * count} count={count}>
+        <button disabled={count < minQuantity} type="button" className="relative flex items-center justify-between p-4 bg-green-700 mt-2 rounded-lg w-full text-white font-extrabold disabled:bg-slate-600 disabled:opacity-60">
           <div className="w-[5%]" />
           <div className="flex items-center gap-2">
             <span>
@@ -54,7 +70,7 @@ export const RifaForm = () => {
 
           <span>
             {
-              (PRICE * count).toLocaleString('pt-BR', {
+              (price * count).toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
               })

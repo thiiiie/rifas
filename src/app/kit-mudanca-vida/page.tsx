@@ -2,6 +2,7 @@ import Image from "next/image";
 import { FiCheckCircle, FiMenu } from "react-icons/fi";
 import { MdHideImage } from "react-icons/md";
 import { PRICE_KIT } from "../constants";
+import { RifaForm } from "@/components/RifaForm";
 
 export default function KitMudancaVida() {
   return (
@@ -37,7 +38,7 @@ export default function KitMudancaVida() {
           </span>
         </p>
 
-        <div className="mt-2 rounded-lg p-2 bg-green-600 flex items-center gap-2">
+        {/* <div className="mt-2 rounded-lg p-2 bg-green-600 flex items-center gap-2">
           <div className="text-3xl text-slate-400 bg-background roundedl-xl h-14 w-14 rounded-lg flex items-center justify-center">
             <MdHideImage />
           </div>
@@ -46,7 +47,21 @@ export default function KitMudancaVida() {
             <h1 className="flex items-center text-white font-bold gap-2">Douglas Silva <FiCheckCircle /></h1>
             <p className="text-xs text-slate-100">Ganhador(a) com o número da sorte <strong className="text-white">806695</strong></p>
           </div>
-        </div>
+        </div> */}
+
+        <p className="mt-2 text-center bg-background p-2 rounded-xl text-sm font-medium text-gray-500">
+          Quanto mais títulos comprar, maiores são as suas chances de ganhar!
+        </p>
+
+        <RifaForm price={PRICE_KIT} minQuantity={2} />
+
+        <section className="mt-2 py-4 px-2 flex flex-col gap-4 text-sm bg-background rounded-xl">
+          <h2 className="font-black">PREMIAÇÃO: 1 KIT MUNDANÇA DE VIDA (974)</h2>
+
+          <p>CONFORME DETALHADO NAS CONDIÇÕES DE PARTICIPAÇÃO.</p>
+
+          <p>SUGESTÃO DE USO DO <strong className="font-black">PRÊMIO LÍQUIDO TOTAL DE R$ 528.125,00</strong></p>
+        </section>
 
         <section className="mt-2 py-4 px-2 flex flex-col gap-4 text-sm bg-background rounded-xl">
           <h2>CONDIÇÕES DE PARTICIPAÇÃO </h2>
