@@ -6,12 +6,17 @@ import { FiCopy } from "react-icons/fi";
 interface QrCodePageProps {
   searchParams: {
     pixKey: string
+    value: string
   }
 }
 
 export default function QrCodePage({ searchParams }: QrCodePageProps) {
   function handleCopyCode() {
     navigator.clipboard.writeText(searchParams.pixKey);
+    window?.dataLayer?.push({
+      event: "copy_code",
+      value: searchParams.value,
+    });
     alert("Código copiado com sucesso!");
   }
   

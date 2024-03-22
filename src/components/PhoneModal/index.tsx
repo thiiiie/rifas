@@ -45,6 +45,7 @@ export const PhoneModal = ({
     register,
     handleSubmit,
     watch,
+    getValues,
     formState: { errors },
     setError
   } = useForm<FormValues>({
@@ -54,6 +55,13 @@ export const PhoneModal = ({
 
   function handleGoNextStep() {
     setStep(2)
+    const phone = getValues("phone")
+
+    window?.dataLayer?.push({
+      event: "fill_phone_and_go_next_step",
+      value: value,
+      phone: phone,
+    });
   }
 
 
@@ -78,7 +86,15 @@ export const PhoneModal = ({
         },
       });
 
-      push(`/qrcode?pixKey=${response.pixKey}`);
+      window?.dataLayer?.push({
+        event: "generate_pix",
+        value: value,
+        phone: data?.phone,
+        name: data?.name,
+        document: data?.document,
+      });
+
+      push(`/qrcode?value=${value}&pixKey=${response.pixKey}`);
     } finally {
       setLoading(false);
     }
@@ -95,7 +111,7 @@ export const PhoneModal = ({
           <DialogTitle className="text-xl">Checkout</DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="px-4 pb-4">
+        <form id="register_form" onSubmit={handleSubmit(onSubmit)} className="px-4 pb-4">
           <p className="bg-[#C9F3FB] p-2 rounded-lg text-sm text-[#0C4855] font-medium">
             Você está adquirindo {count} cota(s) da ação {" "}
             <strong>
