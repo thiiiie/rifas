@@ -2,19 +2,14 @@ import { RifaForm } from "@/components/RifaForm";
 import Image from "next/image";
 import { FiMenu, FiShoppingCart } from "react-icons/fi";
 import { PRICE, products } from "./constants";
+import { Header } from "@/components/Header";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
-      <header className="w-full fixed top-0 left-0 z-10 flex items-center justify-between p-6 bg-header-background text-header-foreground text-3xl">
-        <Image className="w-20 h-auto" width={200} height={100} src="/logo.png" priority alt="logo imagem" />
+      <Header />
 
-        <FiMenu />
-      </header>
-
-
-      <div className="relative top-12 w-full h-[100px] bg-header-background" />
-      <main className="relative top-5 max-w-[600px] w-full bg-rifa-background p-4 rounded-2xl">
+      <main className="relative -top-2 max-w-[600px] w-full bg-rifa-background p-4 rounded-2xl">
         <section className="bg-background rounded-2xl">
           <Image className="rounded-2xl w-full aspect-[5/4] object-cover rounded-b-none" width={600} height={600} priority src="/image1.jpeg" alt="imagem do produto" />
 
