@@ -26,7 +26,7 @@ interface PhoneModalProps {
   children?: React.ReactNode
   value: number
   count?: number
-  productId: 1
+  productId: number
   quantity: number
 }
 
