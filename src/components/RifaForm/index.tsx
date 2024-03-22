@@ -7,14 +7,14 @@ import { MIN_QUANTITY, PRICE } from "@/app/constants"
 import { PhoneModal } from "../PhoneModal"
 
 export const RifaForm = () => {
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(MIN_QUANTITY)
 
   const increment = () => {
     setCount(count + 1)
   }
 
   const decrement = () => {
-    if (count > 1) {
+    if (count > MIN_QUANTITY) {
       setCount(count - 1)
     }
   }
@@ -39,6 +39,7 @@ export const RifaForm = () => {
         increment={increment}
         decrement={decrement}
         setCount={setCount}
+        minValue={MIN_QUANTITY}
       />
 
       <PhoneModal value={PRICE * count} count={count}>

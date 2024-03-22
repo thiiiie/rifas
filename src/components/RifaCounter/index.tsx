@@ -15,19 +15,19 @@ export const RifaCounter = ({
   increment,
   decrement,
   setCount,
-  minValue
+  minValue = 10
 }: RifaCounterProps) => {
 
   return (
     <section className="flex items-center justify-center gap-2 w-full bg-background mt-2 px-4 py-2 rounded-xl shadow-md">
-      <button type="button" onClick={decrement} className="w-7 h-7 bg-background text-foreground border border-slate-400 flex items-center justify-center rounded-full">
+      <button disabled={count <= minValue} type="button" onClick={decrement} className="w-7 h-7 bg-background text-foreground border border-slate-400 flex items-center justify-center rounded-full disabled:opacity-20">
         <FiMinus />
       </button>
 
       <input 
         className="p-2 bg-background border border-slate-300 rounded-xl text-center text-slate-600 font-bold" 
         type="number"
-        min={minValue || 10}
+        min={minValue}
         value={count} 
         onChange={e => setCount(Number(e.target.value))} 
       />
