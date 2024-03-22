@@ -28,3 +28,9 @@ export const products = {
     code: "GB081/2301"
   },
 }
+
+export const productWithIds = {
+  "1": products.kit,
+  "2": products.caminhao,
+  "3": products.kitMilionario,
+}

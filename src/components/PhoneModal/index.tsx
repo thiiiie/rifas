@@ -20,12 +20,13 @@ import { useRouter } from "next/navigation"
 import { formatCurrency } from "@/helpers/formatCurrency"
 import { Loading } from "../Loading"
 import { setCookie } from "nookies"
+import { productWithIds } from "@/app/constants"
 
 interface PhoneModalProps {
   children?: React.ReactNode
   value: number
   count?: number
-  productId: number
+  productId: 1
   quantity: number
 }
 
@@ -42,9 +43,11 @@ export const PhoneModal = ({
   children,
   value,
   count,
-  productId,
+  productId = 1,
   quantity
 }: PhoneModalProps) => {
+  const id = String(productId) as "1" | "2" | "3"
+  const product = productWithIds[id]
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
   const {
@@ -126,7 +129,7 @@ export const PhoneModal = ({
           <p className="bg-[#C9F3FB] p-2 rounded-lg text-sm text-[#0C4855] font-medium">
             Você está adquirindo {count} cota(s) da ação {" "}
             <strong>
-              CAMINHÃO VW/30.330 + 2 VIRTUS HL 2023/2024 com apenas {
+              {product.name} com apenas {
                 formatCurrency(value, false)
               }.
             </strong>

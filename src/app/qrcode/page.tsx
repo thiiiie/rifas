@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { QRCodeCanvas } from "qrcode.react";
 import { FiCopy, FiInfo } from "react-icons/fi";
-import { products } from "../constants";
+import { productWithIds, products } from "../constants";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { PixList } from "@/components/PixList";
 import { PhoneModalErrorField } from "@/components/PhoneModal/error-field";
@@ -20,12 +20,6 @@ interface QrCodePageProps {
     productId: "1" | "2" | "3"
     quantity: string
   }
-}
-
-const productWithIds = {
-  "1": products.kit,
-  "2": products.caminhao,
-  "3": products.kitMilionario,
 }
 
 export default function QrCodePage({ searchParams }: QrCodePageProps) {

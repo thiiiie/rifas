@@ -1,4 +1,5 @@
 'use client'
+import { StrapiPayment } from "@/@types/payment"
 import { fetchClient } from "@/lib/fetchClient"
 import { getRandomInt } from "@/lib/utils"
 import Link from "next/link"
@@ -25,12 +26,16 @@ export const ThanksButton = ({ quantity = "1" }: ThanksButtonProps) => {
     
     // const user = JSON.parse(cookies.user);
 
-    // const data = await fetchClient({
-    //   url: `/payments?filters[document][$eq]=${user.document}`,
+    // const response = await fetchClient<{ data: StrapiPayment[] }>({
+    //   url: `/payments?filters[document][$eq]=${user.document}&sort=id:desc`,
     //   method: "GET",
     // })
 
-    // console.log(data)
+    // const payment = response.data[0]
+
+    // if (!payment || payment?.attributes?.status !== 'DONE') {
+    //   alert("Seu pagamento não foi encontrado")
+    // }
 
     const numbers = Array.from({ length: Number(quantity) }, () => getRandomInt(1246, 9999))
 
