@@ -1,113 +1,70 @@
+import { RifaForm } from "@/components/RifaForm";
 import Image from "next/image";
+import { FiMenu, FiShoppingCart } from "react-icons/fi";
+import { PRICE } from "./constants";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <div className="flex flex-col items-center pb-20">
+      <header className="w-full fixed top-0 left-0 z-10 flex items-center justify-between p-6 bg-header-background text-header-foreground text-3xl">
+        <Image className="w-20 h-auto" width={200} height={100} src="/logo.png" priority alt="logo imagem" />
+
+        <FiMenu />
+      </header>
+
+
+      <div className="relative top-12 w-full h-[100px] bg-header-background" />
+      <main className="relative top-5 max-w-[600px] w-full bg-rifa-background p-4 rounded-2xl">
+        <section className="bg-background rounded-2xl">
+          <Image className="rounded-2xl w-full aspect-[5/4] object-cover rounded-b-none" width={600} height={600} priority src="/image1.jpeg" alt="imagem do produto" />
+
+          <div className="p-4">
+            <h1 className="text-md font-medium leading-5">CAMINHÃO VW/30.330 + 2 VIRTUS HL 2023/2024 COM APENAS 1,69</h1>
+            <p className="text-xs text-gray-600">https://www.gemeosbrasil.me/campanha/1-kit-mundanca-de-vida-974-74241</p>
+            <p className="mt-2 px-2 py-1 rounded-lg bg-green-700 font-extrabold text-xs w-fit text-white animate-pulse">Adquira já!</p>
+          </div>
+        </section>
+
+        <button className="flex items-center justify-center gap-2 w-full bg-cart-button-background py-2 rounded-lg mt-3 text-white font-bold">
+          <FiShoppingCart />
+          Ver meus números
+        </button>
+
+        <p className="text-center flex items-center justify-center gap-2 text-sm mt-2">
+          Por Apenas
+          <span className="p-2 bg-selectButton-background text-selectButton-foreground rounded-lg font-bold">
+            {
+              PRICE.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+              })
+            }
+          </span>
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <p className="mt-2 text-center bg-background p-2 rounded-xl text-sm font-medium text-gray-500">
+          Quanto mais títulos comprar, maiores são as suas chances de ganhar!
+        </p>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
+        <RifaForm />
+
+        <section className="mt-2 py-4 px-2 flex flex-col gap-4 text-sm bg-background rounded-xl">
+          <h2 className="font-black">PREMIAÇÃO: 1 KIT MUNDANÇA DE VIDA (974)</h2>
+
+          <p>CONFORME DETALHADO NAS CONDIÇÕES DE PARTICIPAÇÃO.</p>
+
+          <p>SUGESTÃO DE USO DO <strong className="font-black">PRÊMIO LÍQUIDO TOTAL DE R$ 528.125,00</strong></p>
+        </section>
+
+        <section className="mt-2">
+          <h2 className="text-lg font-bold">
+            🔥 Cotas premiadas 
+            <span className="font-normal text-sm ml-1 text-slate-600">Achou ganhou!</span>
           </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          <div className="h-5 w-full bg-background rounded-xl mt-2" />
+        </section>
+      </main>
+    </div>
   );
 }
