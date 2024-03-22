@@ -3,7 +3,6 @@ import { validateCPF } from "@/helpers/validateCPF"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -19,6 +18,7 @@ import { fetchClient } from "@/lib/fetchClient"
 import { PaymentAPIResponse } from "@/@types/payment-api"
 import { useRouter } from "next/navigation"
 import { formatCurrency } from "@/helpers/formatCurrency"
+import { Loading } from "../Loading"
 
 interface PhoneModalProps {
   children?: React.ReactNode
@@ -40,6 +40,7 @@ export const PhoneModal = ({
   count
 }: PhoneModalProps) => {
   const [step, setStep] = useState(1)
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -49,7 +50,7 @@ export const PhoneModal = ({
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
   })
-  const { replace } = useRouter()
+  const { push } = useRouter()
 
   function handleGoNextStep() {
     setStep(2)
@@ -57,26 +58,30 @@ export const PhoneModal = ({
 
 
   async function onSubmit(data: FormValues) {
-    const cpfIsValid = validateCPF(data.document);
+    try {
+      setLoading(true);
+      const cpfIsValid = validateCPF(data.document);
 
-    if (!cpfIsValid) {
-      setError("document", {
-        message: "Digite um CPF válido"
-      })
-      return;
+      if (!cpfIsValid) {
+        setError("document", {
+          message: "Digite um CPF válido"
+        })
+        return;
+      }
+
+      const response = await fetchClient<PaymentAPIResponse>({
+        url: "/payments",
+        method: "POST",
+        body: {
+          ...data,
+          value,
+        },
+      });
+
+      push(`/qrcode?pixKey=${response.pixKey}`);
+    } finally {
+      setLoading(false);
     }
-
-    const response = await fetchClient<PaymentAPIResponse>({
-      url: "/payments",
-      method: "POST",
-      body: {
-        ...data,
-        value,
-      },
-    });
-
-    replace(`/qrcode?pixKey=${response.pixKey}`);
-    console.log(response);
   }
 
   return (
@@ -171,9 +176,15 @@ export const PhoneModal = ({
           )}
 
           {step === 2 && (
-            <button type="submit" className="flex mt-2 rounded-lg items-center justify-center gap-2 text-lg font-bold text-white w-full bg-blue-700 p-2 disabled:bg-slate-600">
-              <span>Finalizar compra</span>
-              <BsArrowRight />
+            <button disabled={loading} type="submit" className="flex mt-2 rounded-lg items-center justify-center gap-2 text-lg font-bold text-white w-full bg-blue-700 p-2 disabled:bg-slate-400">
+              {loading ? (
+                <Loading />
+              ) : (
+                <>
+                  <span>Finalizar compra</span>
+                  <BsArrowRight />
+                </>
+              )}
             </button>
           )}
         </form>
