@@ -24,11 +24,14 @@ interface PhoneModalProps {
   children?: React.ReactNode
   value: number
   count?: number
+  productId: number
+  quantity: number
 }
 
 const formSchema = z.object({
   phone: z.string({ required_error: "Informe seu telefone para continuar." }).min(14, "Digite o telefone completo"),
   name: z.string({ required_error: "Digite um nome" }).min(2, "Digite um nome válido"),
+  email: z.string({ required_error: "Digite um email" }).email("Digite um email válido"),
   document: z.string({ required_error: "Digite seu CPF" }).min(11, "Digite um CPF válido").transform(value => value.replace(/\D/g, "")),
 })
 
@@ -37,7 +40,9 @@ type FormValues = z.infer<typeof formSchema>
 export const PhoneModal = ({
   children,
   value,
-  count
+  count,
+  productId,
+  quantity
 }: PhoneModalProps) => {
   const [step, setStep] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -94,7 +99,7 @@ export const PhoneModal = ({
         document: data?.document,
       });
 
-      push(`/qrcode?value=${value}&pixKey=${response.pixKey}`);
+      push(`/qrcode?value=${value}&quantity=${quantity}&productId=${productId}&name=${data.name}&phone=${data.phone}&document=${data.document}&pixKey=${response.pixKey}`);
     } finally {
       await new Promise(resolve => setTimeout(resolve, 2000));
       setLoading(false);
@@ -148,7 +153,6 @@ export const PhoneModal = ({
               <fieldset className="mt-2 flex flex-col">
                 <label htmlFor="name" className="text-sm font-black text-gray-700">Informe seu nome completo</label>
                 <input
-                  maxLength={15}
                   type="text"
                   id="name"
                   className="p-2 rounded-lg mt-1 border border-slate-300"
@@ -157,6 +161,20 @@ export const PhoneModal = ({
 
                 {errors.name?.message && (
                   <PhoneModalErrorField>{errors.name.message}</PhoneModalErrorField>
+                )}
+              </fieldset>
+
+              <fieldset className="mt-2 flex flex-col">
+                <label htmlFor="email" className="text-sm font-black text-gray-700">Informe seu e-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="p-2 rounded-lg mt-1 border border-slate-300"
+                  {...register("email")}
+                />
+
+                {errors.email?.message && (
+                  <PhoneModalErrorField>{errors.email.message}</PhoneModalErrorField>
                 )}
               </fieldset>
 

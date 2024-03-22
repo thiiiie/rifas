@@ -22,6 +22,7 @@ const config = {
       'sm-phone': '320px',
       'md-phone': '375px',
       'lg-phone': '425px',
+      'xl-phone': '475px',
       tall: { raw: '(min-height: 800px)' },
       short: { raw: '(min-height: 760px)' },
     },

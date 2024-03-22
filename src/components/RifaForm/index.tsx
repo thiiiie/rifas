@@ -10,11 +10,13 @@ import { PhoneModalErrorField } from "../PhoneModal/error-field"
 interface RifaFormProps {
   minQuantity?: number
   price?: number
+  productId: number
 }
 
 export const RifaForm = ({
   minQuantity = MIN_QUANTITY,
-  price = PRICE
+  price = PRICE,
+  productId
 }: RifaFormProps) => {
   const [count, setCount] = useState(minQuantity)
 
@@ -58,7 +60,7 @@ export const RifaForm = ({
         )
       }
 
-      <PhoneModal value={price * count} count={count}>
+      <PhoneModal quantity={count} productId={productId} value={price * count} count={count}>
         <button disabled={count < minQuantity} type="button" className="relative flex items-center justify-between p-4 bg-green-700 mt-2 rounded-lg w-full text-white font-extrabold disabled:bg-slate-600 disabled:opacity-60">
           <div className="w-[5%]" />
           <div className="flex items-center gap-2">
