@@ -18,5 +18,13 @@ export const products = {
     image: "/image1.jpeg",
     path: "/caminhao-vw-30-virtus",
     code: "GB017/3102"
-  }
+  },
+  kitMilionario: {
+    id: 3,
+    name: "KIT MILIONÁRIO (1133)",
+    price: 3.49,
+    image: "/kit-milionario.jpeg",
+    path: "/kit-milionario",
+    code: "GB081/2301"
+  },
 }

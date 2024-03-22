@@ -19,6 +19,7 @@ import { PaymentAPIResponse } from "@/@types/payment-api"
 import { useRouter } from "next/navigation"
 import { formatCurrency } from "@/helpers/formatCurrency"
 import { Loading } from "../Loading"
+import { setCookie } from "nookies"
 
 interface PhoneModalProps {
   children?: React.ReactNode
@@ -90,6 +91,10 @@ export const PhoneModal = ({
           value,
         },
       });
+
+      setCookie(null, "user", JSON.stringify(data), {
+        path: "/"
+      })
 
       window?.dataLayer?.push({
         event: "generate_pix",

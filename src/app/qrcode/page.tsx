@@ -17,13 +17,19 @@ interface QrCodePageProps {
     name: string
     phone: string
     document: string
-    productId: string
+    productId: "1" | "2" | "3"
     quantity: string
   }
 }
 
+const productWithIds = {
+  "1": products.kit,
+  "2": products.caminhao,
+  "3": products.kitMilionario,
+}
+
 export default function QrCodePage({ searchParams }: QrCodePageProps) {
-  const product = searchParams?.productId === '1' ? products.kit : products.caminhao;
+  const product = productWithIds[searchParams?.productId ?? "1"]
   function handleCopyCode() {
     navigator.clipboard.writeText(searchParams.pixKey);
     window?.dataLayer?.push({
@@ -71,12 +77,12 @@ export default function QrCodePage({ searchParams }: QrCodePageProps) {
 
         <section className="w-[96%]">
           <div className="flex gap-2 p-2 bg-white rounded-xl w-full">
-            <Image className="rounded-xl" src={product.image} alt={product.name} width={100} height={100} />
+            <Image className="rounded-xl object-cover" src={product.image} alt={product.name} width={100} height={100} />
             
             <div>
-              <h2>{product.name}</h2>
+              <h2 className="text-sm">{product.name}</h2>
               <p className="text-xs text-slate-600">Imagina ganhar {product.name}</p>
-
+    
               <p className="mt-2 px-2 py-1 rounded-lg bg-green-700 font-extrabold text-xs w-fit text-white animate-pulse">Adquira já!</p>
               <Link href={product.path} className="text-xs mt-2">Sorteio <span className="font-medium">{product.code}</span></Link>
             </div>
