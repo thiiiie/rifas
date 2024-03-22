@@ -96,6 +96,7 @@ export const PhoneModal = ({
 
       push(`/qrcode?value=${value}&pixKey=${response.pixKey}`);
     } finally {
+      await new Promise(resolve => setTimeout(resolve, 2000));
       setLoading(false);
     }
   }
