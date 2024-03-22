@@ -49,12 +49,11 @@ export default function Home() {
         <RifaForm />
 
         <section className="mt-2 py-4 px-2 flex flex-col gap-4 text-sm bg-background rounded-xl">
-          <h2 className="font-black">PREMIAÇÃO: 1 KIT MUNDANÇA DE VIDA (974)</h2>
+          <h2 className="font-black">PREMIAÇÃO: CAMINHÃO VW/30.330 + 2 VIRTUS HL 2023/2024 COM APENAS 1,69</h2>
 
           <p>CONFORME DETALHADO NAS CONDIÇÕES DE PARTICIPAÇÃO.</p>
-
-          <p>SUGESTÃO DE USO DO <strong className="font-black">PRÊMIO LÍQUIDO TOTAL DE R$ 528.125,00</strong></p>
         </section>
+
 
         <section className="mt-2">
           <h2 className="text-lg font-bold">
