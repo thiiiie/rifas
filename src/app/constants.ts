@@ -15,7 +15,7 @@ export const products = {
     id: 2,
     name: "Cobertura de Luxo com Piscina ou 1 Milhão e Meio no PIX! 🍀💰 - 30/09/2024",
     price: PRICE,
-    image: "/image1.jpeg",
+    image: "/image11.png",
     path: "/caminhao-vw-30-virtus",
     code: "GB017/3102"
   },
