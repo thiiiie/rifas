@@ -9,7 +9,7 @@ export const SelectButton = ({ value, popular = false, ...rest }: SelectButtonPr
     <button 
       type="button"
       data-popular={popular} 
-      className="relative hover:opacity-80 transition-opacity flex flex-col items-center justify-center gap-2 text-center text-2xl md-phone:text-3xl font-black bg-selectButton-background text-selectButton-foreground p-4 rounded-xl data-[popular=true]:bg-selectButton-popular data-[popular=true]:border-green-700 data-[popular=true]:border-2"
+      className="relative hover:opacity-80 transition-opacity flex flex-col items-center justify-center gap-2 text-center text-2xl md-phone:text-3xl font- bg-selectButton-background text-selectButton-foreground p-4 rounded-xl data-[popular=true]:bg-selectButton-popular data-[popular=true]:border-green-700 data-[popular=true]:border-2"
       {...rest}
     >
       {popular && (

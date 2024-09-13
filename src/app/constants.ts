@@ -1,6 +1,6 @@
 export const PRICE_KIT = 6.99;
-export const PRICE = 1.69;
-export const MIN_QUANTITY = 6;
+export const PRICE = 0.49;
+export const MIN_QUANTITY = 20;
 
 export const products = {
   kit: {
@@ -13,7 +13,7 @@ export const products = {
   },
   caminhao: {
     id: 2,
-    name: "CAMINHÃO VW/30.330 + 2 VIRTUS HL 2023/2024 COM APENAS 1,69",
+    name: "Cobertura de Luxo com Piscina ou 1 Milhão e Meio no PIX! 🍀💰 - 30/09/2024",
     price: PRICE,
     image: "/image1.jpeg",
     path: "/caminhao-vw-30-virtus",

@@ -11,7 +11,7 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gemeos Brasil",
+  title: "Cobertura Ryansp",
   description: "Participe de suas rifas favoritas aqui",
 };
 

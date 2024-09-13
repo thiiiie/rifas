@@ -7,15 +7,15 @@
     --background: 0, 0%, 95%;
     --foreground: 222.2 84% 4.9%;
 
-    --rifa-background: hsl(0, 0%, 89%);
-    --header-background: hsl(217, 98%, 24%);
+    --rifa-background: hsl(0, 0%, 100%);
+    --header-background: hsl(0, 0%, 0%);
     --header-foreground: hsl(0, 0%, 100%);
 
     --cart-button-background: hsl(208, 7%, 46%);
 
-    --select-button-background: hsl(217, 98%, 24%);
-    --select-button-foreground: hsl(0, 0%, 100%);
-    --select-button-popular: hsl(153, 53%, 43%);
+    --select-button-background: hsl(0, 0%, 90%);
+    --select-button-foreground: hsl(0, 0%, 0%);
+    --select-button-popular: hsl(0, 0%, 100%);
 
     --footer-background: hsl(0, 0%, 89%);
 
