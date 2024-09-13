@@ -37,15 +37,15 @@ export const RifaForm = ({
   return (
     <div>
       <section className="mt-2 grid grid-cols-3 gap-2">
-        <SelectButton onClick={() => incrementValue(5)} value="05" />
-        <SelectButton onClick={() => incrementValue(10)} value="10" popular />
-        <SelectButton onClick={() => incrementValue(30)} value="30" />
-        <SelectButton onClick={() => incrementValue(40)} value="40" />
-        <SelectButton onClick={() => incrementValue(50)} value="50" />
-        <SelectButton onClick={() => incrementValue(100)} value="100" />
+        <SelectButton href="https://checkout.syfrapay.com/f9cc62-6/checkout/8jG4R2wd4YTzznC" onClick={() => incrementValue(5)} value="05" />
+        <SelectButton href="https://checkout.syfrapay.com/f9cc62-6/checkout/vCWN02Pan95NGnD" onClick={() => incrementValue(10)} value="10" popular />
+        <SelectButton href="https://checkout.syfrapay.com/f9cc62-6/checkout/6zEvcXm1Vj4dXe6" onClick={() => incrementValue(30)} value="30" />
+        <SelectButton href="https://checkout.syfrapay.com/f9cc62-6/checkout/cYGI4c9DRuRCkc8" onClick={() => incrementValue(40)} value="40" />
+        <SelectButton href="https://checkout.syfrapay.com/f9cc62-6/checkout/IofyHVlZOiQ4FXE" onClick={() => incrementValue(50)} value="50" />
+        <SelectButton href="https://checkout.syfrapay.com/f9cc62-6/checkout/fd7rpBzh1OvrPMK" onClick={() => incrementValue(100)} value="100" />
       </section>
 
-      <RifaCounter
+      {/* <RifaCounter
         count={count}
         increment={increment}
         decrement={decrement}
@@ -79,7 +79,7 @@ export const RifaForm = ({
             }
           </span>
         </button>
-      </PhoneModal>
+      </PhoneModal> */}
 
     </div>
   )
