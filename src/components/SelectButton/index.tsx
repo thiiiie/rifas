@@ -1,15 +1,14 @@
-interface SelectButtonProps extends React.HTMLAttributes<HTMLAnchorElement> {
+interface SelectButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
-  href?: string
   popular?: boolean
 }
 
 
 export const SelectButton = ({ value, popular = false, ...rest }: SelectButtonProps) => {
   return (
-    <a
+    <button 
       type="button"
-      data-popular={popular}
+      data-popular={popular} 
       className="relative hover:opacity-80 transition-opacity flex flex-col items-center justify-center gap-2 text-center text-2xl md-phone:text-3xl font- bg-selectButton-background text-selectButton-foreground p-4 rounded-xl data-[popular=true]:bg-selectButton-popular data-[popular=true]:border-green-700 data-[popular=true]:border-2"
       {...rest}
     >
@@ -18,6 +17,6 @@ export const SelectButton = ({ value, popular = false, ...rest }: SelectButtonPr
       )}
       <span data-popular={popular} className="data-[popular=true]:mt-6 flex">+ {value}</span>
       <span className="font-normal text-xs md-phone:text-sm uppercase">Selecionar</span>
-    </a>
+    </button>
   )
 }
